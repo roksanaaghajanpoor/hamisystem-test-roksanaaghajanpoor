@@ -1,0 +1,23 @@
+<div class="container mt-5">
+
+  <form [formGroup]="searchMovieFormGroup" (ngSubmit)="onSubmit()">
+    <div class="form-group d-flex justify-content-end">
+      <input formControlName="searchFormControl" type="text" class="form-control search-input" placeholder="Search">
+      <button type="submit" class="search-button">search</button>
+    </div>
+  </form>
+
+  <ngx-spinner></ngx-spinner>
+
+  <div *ngIf="haveResultOfSearchingMovie">
+    <div class="row d-flex justify-content-center">
+      <movie *ngFor="let movie of allMovies| paginate: paginationConfig" [movie]="movie"></movie>
+    </div>
+    <pagination-controls class="pagination" (pageChange)="pageChanged($event)"></pagination-controls>
+  </div>
+
+  <div *ngIf="!haveResultOfSearchingMovie && serachedMovieTitle" class="row d-flex justify-content-center">
+    <h1>Movie not found!</h1>
+  </div>
+
+</div>

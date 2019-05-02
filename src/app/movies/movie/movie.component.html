@@ -1,0 +1,7 @@
+<a [routerLink]="['/movieDetail', movie.imdbID]">
+  <div class="col-sm mb-5 text-center">
+    <img src={{movie.Poster}} class="movieImage" />
+    <h1 class="movie-title">{{movie.Title}}</h1>
+    <label class="movie-release-year">Release year: {{movie.Year}}</label>
+  </div>
+</a>

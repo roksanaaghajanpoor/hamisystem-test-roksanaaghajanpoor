@@ -1,0 +1,51 @@
+<ngx-spinner></ngx-spinner>
+<div class="container pt-5 pb-5">  
+  <div class="row">
+    <div class="col-md-6">
+      <img class="movie-poster" src={{movieDetailInformation?.Poster}} />
+    </div>
+    <div class="col-md-6 pt-2">
+      <h6>Movie Name</h6>
+      <p>{{movieDetailInformation?.Title}}</p>
+
+      <h6>Actors</h6>
+      <p>{{movieDetailInformation?.Actors}}</p>
+
+      <h6>Pol</h6>
+      <p>{{movieDetailInformation?.Plot}}</p>
+
+      <h6>Release year</h6>
+      <p>{{movieDetailInformation?.Year}}</p>
+
+      <h6>Writer</h6>
+      <p>{{movieDetailInformation?.Writer}}</p>
+
+      <h6>Runtime</h6>
+      <p>{{movieDetailInformation?.Runtime}}</p>
+
+      <h6>Country</h6>
+      <p>{{movieDetailInformation?.Country}}</p>
+
+      <h6>Language</h6>
+      <p>{{movieDetailInformation?.Language}}</p>
+
+      <h6>BoxOffice</h6>
+      <p>{{movieDetailInformation?.BoxOffice}}</p>
+
+      <h6>Type</h6>
+      <p>{{movieDetailInformation?.Type}}</p>
+
+      <h6>Awards</h6>
+      <p>{{movieDetailInformation?.Awards}}</p>
+
+      <h5>Rating</h5>
+      <div *ngFor="let rating of ratings">
+        <h6>{{rating?.Source}}</h6>
+        <div class="bar-container">
+          <div [ngStyle]="{'width': rating?.Value}" class="rating-bar"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

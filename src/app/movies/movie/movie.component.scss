@@ -1,0 +1,15 @@
+a{
+    text-decoration: none;
+    color: #000;
+    &:hover{
+        color: #818181;
+    }
+}
+.movie-title{
+    font-size: 18px;
+    margin-top: 13px;
+}
+.movieImage{
+    width: 250px;
+    height: 350px;
+}
