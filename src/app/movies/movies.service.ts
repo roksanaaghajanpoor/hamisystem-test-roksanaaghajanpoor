@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators'
 import { SearchResult } from './movie';
-import { throwError } from 'rxjs';
+import { throwError, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class MoviesService {
 
   constructor(private http: HttpClient) { }
 
-  getMovies(searchItem: string, pageOffset: number) {
+  getMovies(searchItem: string, pageOffset: number):Observable<SearchResult> {
     let searchQuery: string = '&s=[' + searchItem + ']';
     let page: string = '&page=' + pageOffset;
     let apiOfGetMovies: string = this.firstSctionOfUrl + searchQuery + page;
@@ -30,7 +30,7 @@ export class MoviesService {
     );
   }
 
-  getMovieDetail(movieId: string) {
+  getMovieDetail(movieId: string):Observable<MovieDetail> {
     let id: string = '&i=' + movieId 
     let apiOfGetDetial: string = this.firstSctionOfUrl + id;
 

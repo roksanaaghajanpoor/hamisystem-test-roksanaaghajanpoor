@@ -34,19 +34,19 @@ export class SearchMovieComponent implements OnInit {
     };
   }
 
-  initialSearchMovieForm() {
+  initialSearchMovieForm(): void {
     this.searchMovieFormGroup = this.formBuilder.group({
       searchFormControl: ['']
     })
   }
 
-  public onSubmit() {
+  public onSubmit(): void {
     this.pageOffset = 1;
     this.serachedMovieTitle = this.searchMovieFormGroup.getRawValue().searchFormControl;
     this.fetchMovies(this.serachedMovieTitle, this.pageOffset)
   }
 
-  fetchMovies(movieTitle: string, pageOffset: number) {
+  fetchMovies(movieTitle: string, pageOffset: number): void {
     let movieTitleWithoutSpace = movieTitle.replace('/\s/g,', '%20').trim();
     this.spinner.show();
     this.moviesService.getMovies(movieTitleWithoutSpace, pageOffset).subscribe(response => {
@@ -58,7 +58,7 @@ export class SearchMovieComponent implements OnInit {
         response.Search.forEach(movies => {
           this.allMovies.push(movies);
         });
-        window.scroll(0,0);
+        window.scroll(0, 0);
       }
       this.paginationConfig.totalItems = this.totalNumberOfMovie
     }, (httpErrorResponse: HttpErrorResponse) => {
@@ -67,7 +67,7 @@ export class SearchMovieComponent implements OnInit {
     });
   }
 
-  pageChanged(event: number) {
+  pageChanged(event: number): void {
     this.paginationConfig.currentPage = event;
     this.fetchMovies(this.serachedMovieTitle, this.paginationConfig.currentPage)
   }
