@@ -15,7 +15,7 @@ export class MovieDetailComponent implements OnInit {
   ratings: Ratings[] = [];
 
   constructor(
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private moviesService: MoviesService) { }
 
   ngOnInit() {
@@ -25,13 +25,13 @@ export class MovieDetailComponent implements OnInit {
 
   getMovieDetail(movieId: string): void {
     this.moviesService.getMovieDetail(movieId)
-    .subscribe((response: MovieDetail) => {
-      response.Ratings.forEach(rating => {
-        this.ratings.push(rating);
+      .subscribe((response: MovieDetail) => {
+        response.Ratings.forEach(rating => {
+          this.ratings.push(rating);
+        });
+        this.movieDetailInformation = response;
+      }, (httpErrorResponse: HttpErrorResponse) => {
+        alert("there is a problem");
       });
-      this.movieDetailInformation = response;
-    }, (httpErrorResponse: HttpErrorResponse) => {
-      alert("there is a problem");
-    });
   }
 }
